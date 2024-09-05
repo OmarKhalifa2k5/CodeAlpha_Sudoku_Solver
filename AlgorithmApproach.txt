@@ -1,0 +1,33 @@
+=============== .STEPS FOR SOLVING SUDOKU. ================
+
+	Board Setup.
+
+	- Read The puzzle.
+
+	- Get indices for empty cells
+
+	- Get possible values for these cells using Sudoku Rules
+
+...........................................................
+
+	Using Backtracking Method.
+
+	#1 STEP
+		Search for the next empty cell, if no empty cells were found then puzzle is solved.
+
+	#2 STEP
+		Try any possible value, if there is no possible values for the current cell (STUCK) then backtrack and try another value for the previous empty cell.
+
+	#3 STEP
+		Apply Sudoku rules on the board.
+
+	4# STEP
+		-If all cells are filled with no contradiction then print out the solved puzzle.
+
+		-If there are empty cells after backtracking and trying all possibilities then the puzzle might be (unsolvable).
+
+...........................................................
+
+	-> If Stuck:
+		1- set the previous empty cell on the board to 0
+		2- undo sudoku rules
