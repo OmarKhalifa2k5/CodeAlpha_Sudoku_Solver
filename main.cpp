@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unistd.h>
 
 
 using namespace std;
@@ -30,7 +31,7 @@ bool solved(int board[][9],vector<pair<int,vector<int>>> &emptyCells, int ind);
 void showPossibilities(vector<pair<int,vector<int>>> emptyCell);
 
 
-int main(){
+void solve(){
 	
 	int board [9][9];
 	
@@ -49,11 +50,11 @@ int main(){
 	if( emptyCells.empty() || solved(board, emptyCells, ind) ){
 		DisplayBoard(board);
 	}else{
-		cout << "\nUNSOLVABLE\n;";
+		cout << "\nUNSOLVABLE\n";
 	}
 	
 	
-	return 0;
+	//return 0;
 }
 
 // function below clears the board
@@ -86,6 +87,8 @@ void DisplayBoard(int board[][9]){
 }
 
 void SetupBoard(int board[][9],vector<pair<int,vector<int>>> &emptyCells){
+	cout << "\nEnter each cell seperated by space.\n( for empty cells enter '0' )\n\n";
+	
 	for(int r=0; r<9; r++){
 		for(int c=0; c<9; c++){
 			cin >> board[r][c];
@@ -137,11 +140,11 @@ void addToVector(int value, vector<pair<int,vector<int>>> &emptyCell, int ind){
 	int f = 1;
 	int s = emptyCell[ind].second.size();		//mafhosh 8
 	for(int i=0; i<emptyCell[ind].second.size();i++){
-		temp.push_back(emptyCell[ind].second[i]);
-		if(i+1 !=  s && emptyCell[ind].second[i] < value && emptyCell[ind].second[i+1] > value && f){
+		if(emptyCell[ind].second[i] > value && f){
 			temp.push_back(value);
 			f = 0;
 		}
+		temp.push_back(emptyCell[ind].second[i]);
 	}
 	if(s <= temp.size() && f){
 		temp.push_back(value);
@@ -269,7 +272,7 @@ bool solved(int board[][9],vector<pair<int,vector<int>>> &emptyCells, int ind){
 	if(!isCorrectPath){
 		return false;
 	}
-	cout << "shit\n";
+	return true;
 }
 
 
@@ -286,4 +289,13 @@ void showPossibilities(vector<pair<int,vector<int>>> emptyCell){
 		cout << "\n";
 	}
 	
+}
+
+int main(){
+	int t;
+	cin >> t;
+	while(t--){
+		solve();
+	}
+	return 0;
 }

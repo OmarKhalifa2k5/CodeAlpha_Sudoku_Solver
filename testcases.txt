@@ -1,5 +1,7 @@
 Sudoko Maps
 
+Go to https://valeur.org/sudoku/solver.html and enter the puzzle id given for each test case to see the correct answer
+
 #554
 
 1 0 7 0 8 4 0 2 5
